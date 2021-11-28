@@ -9866,7 +9866,7 @@ void draw_toolsoptions(float x, float y)
                 return;
 
             case 1: //PKG Install
-                DrawDialogOKTimer("For NTFS and EXT2/3/4 devices use the File Manager\n\nPara dispositivos NTFS y EXT2/3/4 usa el Manejador Archivos\n\nPour les lecteurs NTFS et EXT2/3/4 utiliser le gestionnaire de fichiers", 3000.0f);
+                DrawDialogOKTimer("Для устройств NTFS и EXT2/3/4 используйте файловый менеджер\n\nFor NTFS and EXT2/3/4 devices use the File Manager\n\nPara dispositivos NTFS y EXT2/3/4 usa el Manejador Archivos\n\nPour les lecteurs NTFS et EXT2/3/4 utiliser le gestionnaire de fichiers", 3000.0f);
                 draw_pkginstall(x, y);
                 break;
 
