@@ -33,6 +33,7 @@
 #if defined(LOADER_MODE) || defined(LASTPLAY_LOADER)
 #else
 
+#include "language_ini_ru_bin.h"
 #include "language_ini_en_bin.h"
 #include "language_ini_sp_bin.h"
 #include "language_ini_fr_bin.h"
@@ -198,7 +199,7 @@ t_lngstr lang_strings[] =
     { DRAWTOOLS_DELCACHE, "DRAWTOOLS_DELCACHE"      , "Delete Cache Tool" },
    // { DRAWTOOLS_SECDISABLE, "DRAWTOOLS_SECDISABLE"    , "Press To Disable Syscall Security" },
    // { DRAWTOOLS_SECENABLE, "DRAWTOOLS_SECENABLE"     , "Press To Enable Syscall Security" },
-    { DRAWTOOLS_LANGUAGE_1, "DRAWTOOLS_LANGUAGE_1"     , "English" },
+    { DRAWTOOLS_LANGUAGE_1, "DRAWTOOLS_LANGUAGE_1"     , "Русский" },
     { DRAWTOOLS_LANGUAGE_2, "DRAWTOOLS_LANGUAGE_2"     , "Español" },
     { DRAWTOOLS_LANGUAGE_3, "DRAWTOOLS_LANGUAGE_3"     , "Français" },
     { DRAWTOOLS_LANGUAGE_4, "DRAWTOOLS_LANGUAGE_4"     , "Italiano" },
@@ -213,12 +214,15 @@ t_lngstr lang_strings[] =
     { DRAWTOOLS_LANGUAGE_13, "DRAWTOOLS_LANGUAGE_13"   , "한국어"},
     { DRAWTOOLS_LANGUAGE_14, "DRAWTOOLS_LANGUAGE_14"   , "Dansk"},
     { DRAWTOOLS_LANGUAGE_15, "DRAWTOOLS_LANGUAGE_15"   , "Polski"},
-    { DRAWTOOLS_LANGUAGE_16, "DRAWTOOLS_LANGUAGE_16"   , "Custom (from file)"},
+    { DRAWTOOLS_LANGUAGE_16, "DRAWTOOLS_LANGUAGE_16"   , "English"},
+    { DRAWTOOLS_LANGUAGE_17, "DRAWTOOLS_LANGUAGE_17"   , "Custom (from file)"},
 
     { DRAWTOOLS_COPYFROM, "DRAWTOOLS_COPYFROM"     , "Copy from /dev_usb/iris to Iris folder"},
     { DRAWTOOLS_WITHBDVD, "DRAWTOOLS_WITHBDVD"     , "With BDVD Controller"},
     { DRAWTOOLS_NOBDVD,   "DRAWTOOLS_NOBDVD"       , "Without BDVD Device"},
     { DRAWTOOLS_NOBDVD2,  "DRAWTOOLS_NOBDVD2"      , "Cobra / Disc-less payload"},
+    { DRAWTOOLS_CONSOLEID, "DRAWTOOLS_CONSOLEID"   , "Spoof Console ID"},
+    { DRAWTOOLS_CTRLFAN,  "DRAWTOOLS_CTRLFAN"      , "Control Fan & USB Wakeup"},
 
 
     { DRAWTOOLS_PKGTOOLS, "DRAWTOOLS_PKGTOOLS"     , ".PKG Install" },
@@ -450,7 +454,7 @@ void open_language(int lang, char * filename)
                 file_bin = (char *) language_ini_fi_bin;
                 file_size = language_ini_fi_bin_size;
                 break;
-            case 12: // kr - DRAWTOOLS_LANGUAGE_12: 한국어
+            case 12: // kr - DRAWTOOLS_LANGUAGE_13: 한국어
                 file_bin = (char *) language_ini_kr_bin;
                 file_size = language_ini_kr_bin_size;
                 break;
@@ -458,13 +462,17 @@ void open_language(int lang, char * filename)
                 file_bin = (char *) language_ini_da_bin;
                 file_size = language_ini_da_bin_size;
                 break;
-            case 14: // da - DRAWTOOLS_LANGUAGE_15: Polski
+            case 14: // pl - DRAWTOOLS_LANGUAGE_15: Polski
                 file_bin = (char *) language_ini_pl_bin;
-                file_size = language_ini_da_bin_size;
+                file_size = language_ini_pl_bin_size;
                 break;
-            default: // en - DRAWTOOLS_LANGUAGE_1
+            case 15: // en - DRAWTOOLS_LANGUAGE_16: English
                 file_bin = (char *) language_ini_en_bin;
                 file_size = language_ini_en_bin_size;
+                break;
+            default: // ru - DRAWTOOLS_LANGUAGE_1: Русский
+                file_bin = (char *) language_ini_ru_bin;
+                file_size = language_ini_ru_bin_size;
                 break;
         }
 
@@ -548,7 +556,7 @@ int get_system_language(void)
             break;
         case 0x1:
         //  strcpy( lang, "eng-us_language.ini" );
-            ret_lang = 0;
+            ret_lang = 15;
             break;
         case 0x2:
         //  strcpy( lang, "spa_language.ini" );
@@ -608,7 +616,7 @@ int get_system_language(void)
             break;
         case 0x10:
         //  strcpy( lang, "pol_language.ini" );
-            ret_lang = 0;
+            ret_lang = 14;
             break;
         case 0x11:
         //  strcpy( lang, "por-bra_language.ini" );
@@ -616,7 +624,7 @@ int get_system_language(void)
             break;
         case 0x12:
         //  strcpy( lang, "eng-uk_language.ini" );
-            ret_lang = 0;
+            ret_lang = 15;
             break;
         default:
         //  strcpy( lang, "language.ini" );

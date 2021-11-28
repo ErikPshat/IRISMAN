@@ -1416,7 +1416,7 @@ void video_adjust()
         DrawFormatString(0, (512 - 24)/2 + 96, "%s", language[VIDEOADJUST_DEFAULTS]);
 
         // Warning!! don´t traslate this string!
-        DrawFormatString(0, (512 - 24)/2 + 128, "%s", "Press [] to English language");
+        DrawFormatString(0, (512 - 24)/2 + 128, "%s", "Нажмите [] для переключения на русский язык");
 
         SetFontAutoCenter(0);
 
@@ -9832,12 +9832,12 @@ void draw_toolsoptions(float x, float y)
 
     y2+= 52;
 
-    DrawButton1_UTF8(box_left, y2, 520, "Spoof Console ID", (flash && (select_option == 6)));
+    DrawButton1_UTF8(box_left, y2, 520, language[DRAWTOOLS_CONSOLEID], (flash && (select_option == 6)));
 
     y2+= 52;
 
     if(!is_ps3hen)
-        DrawButton1_UTF8(box_left, y2, 520, "Control Fan & USB Wakeup", (flash && (select_option == 7)));
+        DrawButton1_UTF8(box_left, y2, 520, language[DRAWTOOLS_CTRLFAN], (flash && (select_option == 7)));
 
 
     SetCurrentFont(FONT_TTF);
